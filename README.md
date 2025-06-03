@@ -22,7 +22,7 @@ Given a match setup (teams, toss winner, venue, and month), the model can:
 ## Before vs After Fine-Tuning
 
 ### Before Fine-Tuning (Hallucinated Response)
-
+```
 **Prompt**:  
 "To win a match at MA Chidambaram Stadium, Chepauk should I win the toss and choose to bat first or bowl first? Give me a decision."
 
@@ -31,17 +31,17 @@ Step 1: Consider the advantage of batting first...
 Step 2: Consider the advantage of bowling first...  
 Step 3: Consider the conditions...  
 Final answer is: bat first
-
+```
 The model output was generic, lacking venue-specific reasoning. It hallucinated traits that are not reflective of the slow, spin-friendly nature of Chepauk.
 
 ### After Fine-Tuning (Grounded Prediction)
-
+```
 **Prompt**:  
 "To win a match at MA Chidambaram Stadium, Chepauk should I win the toss and choose to bat first or bowl first? Give me a decision."
 
 **Output**:  
 "At Chepauk, teams winning the toss usually prefer to bat first, as the pitch tends to slow down in the second innings and favors spin. Setting a target above 160 can create scoreboard pressure. The recommended decision is to bat first."
-
+```
 The model now reflects venue-aware reasoning based on historical trends.
 
 ## Dataset
@@ -78,23 +78,19 @@ Realistic score forecasts for both innings
 Contextual, fluent, natural language outputs
 
 Project Structure
-css
-Always show details
-
-Copy code
+```
 project-root/
 ├── code/
 │   ├── finetuning.ipynb
 │   └── data/
 │       └── ipl_dataset.json
 ├── README.md
+```
 Tools and Libraries
 Hugging Face Transformers
 
 PEFT (Parameter-Efficient Fine-Tuning)
-
 bitsandbytes (4-bit quantization)
-
 LoRA / QLoRA adapters
 
 Python, PyTorch, Pandas
